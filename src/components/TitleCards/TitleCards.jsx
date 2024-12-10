@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./TitleCards.css";
 import cards_data from "../../assets/cards/Cards_data";
 import {Link } from "react-router-dom"
+import TMDB_API_TOKEN from '../../../tokens'
 
 const TitleCards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
@@ -11,8 +12,7 @@ const TitleCards = ({ title, category }) => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMDIwMTYxODIxYWQ0ODc0MjQzNTEwODJmM2UxMmMyNyIsIm5iZiI6MTczMzc1Mjk4My44MjA5OTk5LCJzdWIiOiI2NzU2Zjg5N2NlNDdmMjA5MDA1MTVkNDQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.RCEVdYkHoTSWWNwNChwk3f_7aZ4mdFg2wxMBJVyfOsQ",
+      Authorization: TMDB_API_TOKEN,
     },
   };
 
@@ -22,6 +22,7 @@ const TitleCards = ({ title, category }) => {
   };
 
   useEffect(() => {
+
     fetch(
       `https://api.themoviedb.org/3/movie/${
         category ? category : "now_playing"

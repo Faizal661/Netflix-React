@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
   return (
     <div className="login">
-      <img src={logo} className="login-logo" alt="" />
+      <Link to={"/"}>
+        <img src={logo} className="login-logo" alt="" />
+      </Link>
       <div className="login-form">
         <h1>{signState} </h1>
         <form>
@@ -29,11 +32,25 @@ const Login = () => {
         <div className="form-switch">
           {signState === "Sign Up" ? (
             <p>
-              Already have an account? <span onClick={()=>{setSignState("Sign In")}}>Sign In Now</span>
+              Already have an account?{" "}
+              <span
+                onClick={() => {
+                  setSignState("Sign In");
+                }}
+              >
+                Sign In Now
+              </span>
             </p>
           ) : (
             <p>
-              New to Netflix? <span onClick={()=>{setSignState("Sign Up")}}>Sign Up Now</span>
+              New to Netflix?{" "}
+              <span
+                onClick={() => {
+                  setSignState("Sign Up");
+                }}
+              >
+                Sign Up Now
+              </span>
             </p>
           )}
         </div>
